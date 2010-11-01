@@ -36,5 +36,5 @@ try:
 	
 	# Close!
 	transport.close()
-except Thrift.TException, tx:
-	print tx.message
+except Thrift.TException, e:
+	print e.message

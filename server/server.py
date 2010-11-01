@@ -6,14 +6,16 @@ from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol
 from thrift.server import TServer
 
+PORT = 9090
+
 handler = CharacterHandler()
 processor = CharacterService.Processor(handler)
-transport = TSocket.TServerSocket(9090)
+transport = TSocket.TServerSocket(PORT)
 tfactory = TTransport.TBufferedTransportFactory()
 pfactory = TBinaryProtocol.TBinaryProtocolFactory()
 
 server = TServer.TSimpleServer(processor, transport, tfactory, pfactory)
 
-print 'Starting the server...'
+print "Starting the server on port %i..." % (PORT)
 server.serve()
-print 'done.'
+print "done."
