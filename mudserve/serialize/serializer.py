@@ -31,7 +31,7 @@ class Serializer(object):
         
         # Return the fully constructed instance
         return inst
-        
+    
     def to_string(self, inst):
         """
         Serializes the object to a string from a fully constructed object.
