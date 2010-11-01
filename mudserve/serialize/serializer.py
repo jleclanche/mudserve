@@ -58,7 +58,8 @@ class Serializer(object):
 	
 	def to_file(self, inst, filepath):
 		"""
-		Deserializes an object given a file path. This is a pure utility method.
+		Serializes an object given an instance and a file path.
+		This is a pure utility method.
 		"""
 		
 		str = self.to_string(inst)
