@@ -1,4 +1,4 @@
-from ..mudrpc.character import Character
+from ..mudrpc.character import CharacterService
 from ..mudrpc.character.ttypes import *
 
 class CharacterHandler(object):
@@ -7,7 +7,7 @@ class CharacterHandler(object):
     def ping(self):
         print "ping()"
     def createCharacter(self, name):
-        char = Character(id=1, name=name)
+        char = Character(id=(1+len(self.characters)), name=name)
         self.characters.append(char)
         return char
     def getCharacters(self):

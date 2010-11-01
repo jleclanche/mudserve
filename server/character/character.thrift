@@ -3,7 +3,7 @@ struct Character {
 	2: string name,
 }
 
-service Character {
+service CharacterService {
 	Character createCharacter(1:string name),
 	list<Character> getCharacters(),
 	void ping()
