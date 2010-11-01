@@ -1,32 +1,32 @@
 import sys
-sys.path.append('../server')
+sys.path.append("../server")
 
-from mudrpc.character import CharacterService
+from mudrpc.character.CharacterService import Client
 from mudrpc.character.ttypes import *
 
 from thrift import Thrift
-from thrift.transport import TSocket
-from thrift.transport import TTransport
-from thrift.protocol import TBinaryProtocol
+from thrift.transport.TSocket import TSocket
+from thrift.transport.TTransport import TBufferedTransport
+from thrift.protocol.TBinaryProtocol import TBinaryProtocol
 
 try:
 	# Make socket
-	transport = TSocket.TSocket('localhost', 9090)
+	transport = TSocket("localhost", 9090)
 	
 	# Buffering is critical. Raw sockets are very slow
-	transport = TTransport.TBufferedTransport(transport)
+	transport = TBufferedTransport(transport)
 	
 	# Wrap in a protocol
-	protocol = TBinaryProtocol.TBinaryProtocol(transport)
+	protocol = TBinaryProtocol(transport)
 	
 	# Create a client to use the protocol encoder
-	client = CharacterService.Client(protocol)
+	client = Client(protocol)
 	
 	# Connect!
 	transport.open()
 	
 	client.ping()
-	print 'ping()'
+	print "ping()"
 	
 	# Create a character
 	client.createCharacter("Cide")
@@ -37,4 +37,4 @@ try:
 	# Close!
 	transport.close()
 except Thrift.TException, tx:
-	print '%s' % (tx.message)
+	print tx.message
