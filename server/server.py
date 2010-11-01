@@ -14,7 +14,7 @@ transport = TSocket.TServerSocket(PORT)
 tfactory = TTransport.TBufferedTransportFactory()
 pfactory = TBinaryProtocol.TBinaryProtocolFactory()
 
-server = TServer.TSimpleServer(processor, transport, tfactory, pfactory)
+server = TServer.TForkingServer(processor, transport, tfactory, pfactory)
 
 print "Starting the server on port %i..." % (PORT)
 server.serve()
