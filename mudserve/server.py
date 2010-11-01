@@ -1,5 +1,5 @@
-from .character.handler import CharacterHandler
-from .mudrpc.character import CharacterService
+from mudserve.character.handler import CharacterHandler
+from mudserve.mudrpc.character import CharacterService
 
 from thrift.transport import TSocket
 from thrift.transport import TTransport

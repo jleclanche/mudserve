@@ -1,5 +1,5 @@
-from ..mudrpc.character import CharacterService
-from ..mudrpc.character.ttypes import *
+from mudserve.mudrpc.character import CharacterService
+from mudserve.mudrpc.character.ttypes import *
 
 class CharacterHandler(object):
 	def __init__(self):
