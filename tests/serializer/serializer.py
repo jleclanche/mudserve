@@ -2,7 +2,7 @@ import subprocess
 import sys
 import unittest
 from os.path import dirname
-from ..utils import compile_thrift
+from ..utils import compile_thrift, get_tempfile
 from mudserve.serialize import Serializer
 
 class TestSerializer(unittest.TestCase):
@@ -12,12 +12,18 @@ class TestSerializer(unittest.TestCase):
 		self.cls = TestObj
 		self.serializer = Serializer(TestObj)
 	
-	def testSerialize(self):
+	def test_str(self):
 		inst = self.cls(name="test", id=5)
 		str = self.serializer.to_string(inst)
 		obj = self.serializer.from_string(str)
-		assert obj.name == "test"
-		assert obj.id == 5
+		assert obj == inst
+		
+	def test_file(self):
+		f = get_tempfile()
+		inst = self.cls(name="test", id=6)
+		str = self.serializer.to_file(inst, f.name)
+		obj = self.serializer.from_file(f.name)
+		assert obj == inst
 
 if __name__ == "__main__":
 	unittest.main()
