@@ -1,3 +1,3 @@
 rm -rf ./mudrpc
-thrift -r --gen py:new_style main.thrift
+thrift -r --gen py:new_style include.thrift
 mv gen-py mudrpc

@@ -1,2 +1,5 @@
-include "character/character.thrift"
-include "map/map.thrift"
+/**
+ * General-purpose GUID for unique identifiers.
+ */
+
+typedef string guid
