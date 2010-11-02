@@ -1,0 +1,5 @@
+include "auth/auth.thrift"
+include "character/character.thrift"
+include "combat/combat.thrift"
+include "data/map/map.thrift"
+include "data/spell/spell.thrift"
