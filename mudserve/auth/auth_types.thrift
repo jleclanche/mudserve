@@ -1,3 +1,5 @@
+namespace py mudrpc.auth.types
+
 /**
  * A timestamp expressed as the number of milliseconds since the standard epoch
  *

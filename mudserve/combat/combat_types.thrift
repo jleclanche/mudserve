@@ -1,3 +1,4 @@
+namespace py mudrpc.combat.types
 include "../main.thrift"
 
 /**

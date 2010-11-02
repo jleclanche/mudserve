@@ -1,3 +1,4 @@
+namespace py mudrpc.map
 include "zone.thrift"
 
 struct Map {

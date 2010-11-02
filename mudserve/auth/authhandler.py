@@ -1,5 +1,5 @@
 from time import time as utctime
-from mudserve.mudrpc.auth_types.ttypes import User
+from mudserve.mudrpc.auth.types.ttypes import User
 
 class AuthHandler(object):
 	def validate_token(self, authToken):

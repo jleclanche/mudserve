@@ -1,3 +1,5 @@
+namespace py mudrpc.auth
+
 /**
  * This contains the authentication format for the MudServe server.
  * This is heavily inspired by Evernote's EDAM protocol.

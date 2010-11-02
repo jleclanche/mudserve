@@ -1,3 +1,5 @@
+namespace py mudrpc.combat
+
 include "combat_types.thrift"
 include "../auth/auth_types.thrift"
 include "../spell/spell_types.thrift"

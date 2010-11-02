@@ -1,4 +1,5 @@
 from mudserve.auth.authhandler import AuthHandler
+
 class CombatHandler(AuthHandler):
 	def __init__(self):
 		self.teams = []

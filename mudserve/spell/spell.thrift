@@ -1,3 +1,4 @@
+namespace py mudrpc.spell
 include "spell_types.thrift"
 include "../auth/auth_types.thrift"
 

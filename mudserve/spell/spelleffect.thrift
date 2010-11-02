@@ -1,3 +1,4 @@
+namespace py mudrpc.spell.effect
 /**
  * The spell effect codes, identifying a specific spell effect type.
  * - DAMAGE
