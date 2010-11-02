@@ -1,6 +1,6 @@
 include "combat_types.thrift"
 include "../auth/auth_types.thrift"
-include "../data/spell/spell_types.thrift"
+include "../spell/spell_types.thrift"
 include "../main.thrift"
 
 /**
