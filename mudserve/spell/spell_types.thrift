@@ -1,4 +1,4 @@
-namespace py mudrpc.spell.types
+namespace py mudserve.mudrpc.spell.types
 include "spelleffect.thrift"
 
 // The type of a spell id

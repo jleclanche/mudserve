@@ -1,4 +1,4 @@
-namespace py mudrpc.spell.database
+namespace py mudserve.mudrpc.spell.database
 include "spell_types.thrift"
 
 struct SpellDatabase {

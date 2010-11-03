@@ -1,4 +1,4 @@
-namespace py mudrpc.map.zone
+namespace py mudserve.mudrpc.map.zone
 enum ZONE_TYPE {
 	FOREST = 1,
 	DENSE_FOREST,

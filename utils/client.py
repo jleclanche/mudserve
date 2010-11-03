@@ -1,8 +1,7 @@
-import sys
-sys.path.append("../server")
+import sys, time
+sys.path.append("../")
 
-from mudrpc.character.CharacterService import Client
-from mudrpc.character.ttypes import *
+from mudserve.mudrpc.combat.CombatService import Client
 
 from thrift import Thrift
 from thrift.transport.TSocket import TSocket
@@ -25,14 +24,15 @@ try:
 	# Connect!
 	transport.open()
 	
-	client.ping()
-	print "ping()"
-	
-	# Create a character
-	client.createCharacter("Cide")
-	print client.getCharacters()
-	client.createCharacter("Adys")
-	print client.getCharacters()
+	while True:
+		status = client.getStatus("auth1", "fight1")
+		print "Status update:\n%r" % (status)
+		
+		if status.currentTurn == "player1":
+			print "It's your turn, casting spell!\n"
+			client.castSpell("auth1", "fight1", 1, "player2")
+		print "---------------------"
+		time.sleep(3)
 	
 	# Close!
 	transport.close()

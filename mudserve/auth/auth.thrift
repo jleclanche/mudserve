@@ -1,4 +1,4 @@
-namespace py mudrpc.auth
+namespace py mudserve.mudrpc.auth
 
 /**
  * This contains the authentication format for the MudServe server.

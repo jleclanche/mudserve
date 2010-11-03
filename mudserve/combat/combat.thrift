@@ -1,4 +1,4 @@
-namespace py mudrpc.combat
+namespace py mudserve.mudrpc.combat
 
 include "combat_types.thrift"
 include "../auth/auth_types.thrift"

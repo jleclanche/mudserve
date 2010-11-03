@@ -1,5 +1,5 @@
-from mudserve.character.handler import CharacterHandler
-from mudserve.mudrpc.character import CharacterService
+from mudserve.combat.handler import CombatHandler
+from mudserve.mudrpc.combat import CombatService
 
 from thrift.transport import TSocket
 from thrift.transport import TTransport
@@ -8,8 +8,8 @@ from thrift.server import TServer
 
 PORT = 9090
 
-handler = CharacterHandler()
-processor = CharacterService.Processor(handler)
+handler = CombatHandler()
+processor = CombatService.Processor(handler)
 transport = TSocket.TServerSocket(PORT)
 tfactory = TTransport.TBufferedTransportFactory()
 pfactory = TBinaryProtocol.TBinaryProtocolFactory()

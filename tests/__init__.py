@@ -6,13 +6,13 @@ from unittest import TestSuite, TextTestRunner
 from . import constants
 
 # Test suites
-from . import serializer, spelleffect
+from . import serializer
 
 # Make sure the generated thrift files are on the python path
 sys.path.insert(0, constants.GEN_PATH)
 
 # Create our suite
-suite = TestSuite((serializer.suite, spelleffect.suite))
+suite = TestSuite((serializer.suite,))
 
 # Run it with the standard runner
 runner = TextTestRunner()

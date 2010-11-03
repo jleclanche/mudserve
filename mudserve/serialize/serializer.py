@@ -6,17 +6,16 @@ class Serializer(object):
 	Takes care of serializing Thrift structures to and from disk.
 	"""
 	
-	def __init__(self, Struct, transport=TMemoryBuffer, protocol=TBinaryProtocol):
+	def __init__(self, Transport=TMemoryBuffer, Protocol=TBinaryProtocol):
 		"""
 		Initializes a serializer object for serializing to and from objects
 		of the structure Struct.
 		"""
 		
-		self._struct = Struct
-		self._transport = transport
-		self._protocol = protocol
+		self._transport = Transport
+		self._protocol = Protocol
 	
-	def from_string(self, str):
+	def from_string(self, Struct, str):
 		"""
 		Deserializes the object from a string to a fully constructed object.
 		"""
@@ -25,7 +24,7 @@ class Serializer(object):
 		transport = self._transport(str)
 		protocol = self._protocol(transport)
 		# Create a new empty instance
-		inst = self._struct()
+		inst = Struct()
 		# Construct the instance by reading the byte string
 		inst.read(protocol)
 		
@@ -46,13 +45,13 @@ class Serializer(object):
 		# Return the serialization as a byte string
 		return transport.getvalue()
 	
-	def from_file(self, filepath):
+	def from_file(self, Struct, filepath):
 		"""
 		Deserializes an object given a file path. This is a pure utility method.
 		"""
 		
 		f = open(filepath, "rb")
-		inst = self.from_string(f.read())
+		inst = self.from_string(Struct, f.read())
 		f.close()
 		return inst
 	

@@ -9,7 +9,7 @@ from mudserve.mudrpc.spell.effect.ttypes import SpellEffect, SpellEffectCode
 
 class _SpellEffectMeta(type):
 	def __init__(cls, *args):
-		super(_SpellEffectMeta, cls).__init__(cls, *args)
+		super(_SpellEffectMeta, cls).__init__(*args)
 		# If the cls._handler attribute does not exist,
 		# we're currently handling the SpellEffectHandler
 		# base class, so we'll just initialize it without
@@ -19,7 +19,7 @@ class _SpellEffectMeta(type):
 		else:
 			cls._handlers[cls.EFFECT_CODE] = cls
 			
-class SpellEffectHandler(type):
+class SpellEffectHandler(object):
 	__metaclass__ = _SpellEffectMeta
 	
 	def __new__(cls, effect):
@@ -36,9 +36,15 @@ class SpellEffectHandler(type):
 		  If the handler is not found.
 		"""
 		
-		handler = cls._handlers[effect.effectCode](effect)
-		return handler
-	
+		# Make sure this is the call to SpellEffectHandler and not
+		# a subclass, since initialization of the subclass also
+		# calls this __new__ method.
+		if cls is SpellEffectHandler:
+			handler = cls._handlers[effect.effectCode](effect)
+			return handler
+		else:
+			return super(SpellEffectHandler, cls).__new__(cls)
+			
 	def __init__(self, effect):
 		self.effect = effect
 	
@@ -49,4 +55,4 @@ class DamageEffectHandler(SpellEffectHandler):
 	EFFECT_CODE = SpellEffectCode.DAMAGE
 	
 	def execute(self, caster, target):
-		print "%r => %d damage to %r" % (caster, self.effect.arg1, target)
+		target.damage(self.effect.arg1)
