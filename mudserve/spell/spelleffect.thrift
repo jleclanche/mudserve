@@ -10,7 +10,8 @@ namespace py mudserve.mudrpc.spell.effect
  
 enum SpellEffectCode {
 	DAMAGE = 1,
-	
+	HEAL   = 2,
+	KILL   = 3,
 }
 struct SpellEffect {
 	1: required SpellEffectCode effectCode,

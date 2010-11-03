@@ -16,7 +16,7 @@ class UnitHandler(object):
 			"healing": 0,
 			"auras": []
 		}
-		
+	
 	def damage(self, amount):
 		"""
 		Damages the unit by a specific amount.
@@ -36,11 +36,17 @@ class UnitHandler(object):
 		if self.is_alive():
 			self.unit.health += amount
 			self.log["healing"] += amount
-			
+	
+	def kill(self):
+		"""
+		Instantly kills the unit
+		"""
+		
+		self.unit.health = 0
+	
 	def apply_aura(self, aura):
 		"""
 		Apply an aura on the unit.
-		TODO: Should it require the unit being alive?
 		"""
 		
 		#self.unit.auras.append(aura)

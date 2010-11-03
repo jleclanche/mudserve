@@ -18,7 +18,7 @@ class _SpellEffectMeta(type):
 			cls._handlers = {}
 		else:
 			cls._handlers[cls.EFFECT_CODE] = cls
-			
+
 class SpellEffectHandler(object):
 	__metaclass__ = _SpellEffectMeta
 	
@@ -44,15 +44,30 @@ class SpellEffectHandler(object):
 			return handler
 		else:
 			return super(SpellEffectHandler, cls).__new__(cls)
-			
+	
 	def __init__(self, effect):
 		self.effect = effect
 	
 	def execute(self, caster, target, *args):
 		raise NotImplementedError
-	
+
+
 class DamageEffectHandler(SpellEffectHandler):
 	EFFECT_CODE = SpellEffectCode.DAMAGE
 	
 	def execute(self, caster, target):
 		target.damage(self.effect.arg1)
+
+
+class HealEffectHandler(SpellEffectHandler):
+	EFFECT_CODE = SpellEffectCode.HEAL
+	
+	def execute(self, caster, target):
+		target.heal(self.effect.arg1)
+
+
+class KillEffectHandler(SpellEffectHandler):
+	EFFECT_CODE = SpellEffectCode.KILL
+	
+	def execute(self, caster, target):
+		target.kill()
