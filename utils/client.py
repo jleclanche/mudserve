@@ -10,7 +10,7 @@ from thrift.protocol.TBinaryProtocol import TBinaryProtocol
 
 try:
 	# Make socket
-	transport = TSocket("ctscreens.net", 9090)
+	transport = TSocket("213.100.51.33", 9090)
 	
 	# Buffering is critical. Raw sockets are very slow
 	transport = TBufferedTransport(transport)
