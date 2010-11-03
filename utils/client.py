@@ -1,4 +1,6 @@
-import sys, time
+#!/usr/bin/env python
+import sys
+import time
 sys.path.append("../")
 
 from mudserve.mudrpc.combat.CombatService import Client
