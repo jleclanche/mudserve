@@ -11,11 +11,6 @@ class UnitHandler(object):
 	
 	def __init__(self, unit):
 		self.unit = unit
-		self.log = {
-			"damage": 0,
-			"healing": 0,
-			"auras": []
-		}
 	
 	def damage(self, amount):
 		"""
@@ -24,7 +19,6 @@ class UnitHandler(object):
 		
 		# Can't have negative health
 		self.unit.health = max(self.unit.health-amount, 0)
-		self.log["damage"] += amount
 	
 	def heal(self, amount):
 		"""
@@ -35,7 +29,6 @@ class UnitHandler(object):
 		# (although they are certainly visible)
 		if self.is_alive():
 			self.unit.health += amount
-			self.log["healing"] += amount
 	
 	def kill(self):
 		"""
