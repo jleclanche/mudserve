@@ -20,11 +20,11 @@ service CombatService {
 	 */
 	void castSpell(1: auth_types.AuthToken authToken,
 	               2: main.guid combatGuid,
-				   3: spell_types.SpellID spellId,
-				   4: main.guid targetGuid)
-	  throws (1: combat_types.CombatException combatException,
-	          2: auth_types.MUDAUserException userException,
-			  3: auth_types.MUDASystemException systemException),
+	               3: spell_types.SpellID spellId,
+	               4: main.guid targetGuid)
+	throws (1: combat_types.CombatException combatException,
+	        2: auth_types.MUDAUserException userException,
+	        3: auth_types.MUDASystemException systemException),
 	
 	/**
 	 * Retrieves the combat status of a specific fight.
@@ -35,8 +35,8 @@ service CombatService {
 	 *   want to receive history about later on.
 	 */
 	combat_types.CombatStatus getStatus(1: auth_types.AuthToken authToken,
-	                       2: main.guid combatGuid)
-	  throws (1: combat_types.CombatException combatException,
-	          2: auth_types.MUDAUserException userException,
-			  3: auth_types.MUDASystemException systemException)
+	                                    2: main.guid combatGuid)
+	throws (1: combat_types.CombatException combatException,
+	        2: auth_types.MUDAUserException userException,
+	        3: auth_types.MUDASystemException systemException)
 }
