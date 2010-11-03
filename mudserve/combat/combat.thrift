@@ -16,7 +16,7 @@ service CombatService {
 	 *   The id of the spell, as described in the Spell structure.
 	 *
 	 * @param targetGuid
-	 *   The id of the target, as passed in the Combatant structure.
+	 *   The id of the target, as passed in the Unit structure.
 	 */
 	void castSpell(1: auth_types.AuthToken authToken,
 	               2: main.guid combatGuid,

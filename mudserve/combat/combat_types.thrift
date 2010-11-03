@@ -2,18 +2,18 @@ namespace py mudserve.mudrpc.combat.types
 include "../main.thrift"
 
 /**
- * The combatant structure. Encompasses the relevant details of a combatant.
+ * The unit structure. Encompasses the relevant details of a unit.
  * The fields are as follows:
  * - guid
- *     The combatant's unique identifier
+ *     The unit's unique identifier
  * - isPC
- *     If the combatant is a player controlled character or not
+ *     If the unit is a player controlled character or not
  * - health
- *     The combatant's current health. If zero, the combatant is dead.
+ *     The unit's current health. If zero, the unit is dead.
  * - max_health
- *     The combatant's max health.
+ *     The unit's max health.
  */
-struct Combatant {
+struct Unit {
 	1: required main.guid guid,
 	2: required bool isPC,
 	3: required i16 health,
@@ -32,8 +32,8 @@ struct Combatant {
  *     The time remaining on the current turn.
  * - turnId
  *     The id of the current turn (effectively a turn counter).
- * - combatants
- *     A map of (guid, Combatant) of fighting combatants. This is only set
+ * - units
+ *     A map of (guid, Unit) of fighting units. This is only set
  *     when the data has changed.
  * For inactive fights:
  * - winningTeam
@@ -46,7 +46,7 @@ struct CombatStatus {
 	2: optional main.guid currentTurn,
 	3: optional byte turnTime,
 	4: optional i16 turnId,
-	5: optional map<main.guid, Combatant> combatants,
+	5: optional map<main.guid, Unit> units,
 	
 	// Fields below are set for inactive fights
 	6: optional byte winningTeam

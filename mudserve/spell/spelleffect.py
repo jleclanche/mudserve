@@ -28,7 +28,7 @@ class SpellEffectHandler(object):
 		
 		@param effect_code
 		  The effect code to retrieve the handler for.
-		  
+		
 		@return
 		  An initialized spell effect handler for the given effect code.
 		

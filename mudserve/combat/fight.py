@@ -1,7 +1,7 @@
 from mudserve import cache
 from mudserve.spell.spell import SpellDatabaseHandler
 from mudserve.mudrpc.combat.types.ttypes import CombatStatus
-from mudserve.combat.combatant import CombatantHandler
+from mudserve.combat.unit import UnitHandler
 
 class Fight(object):
 	"""
@@ -48,7 +48,7 @@ class Fight(object):
 		if not status.active or status.turnId != known_turn:
 			return status
 		# Unset fields that are already known
-		for field in ("currentTurn", "combatants"):
+		for field in ("currentTurn", "units"):
 			setattr(status, field, None)
 		return status
 	
@@ -70,10 +70,10 @@ class Fight(object):
 		spell = SpellDatabaseHandler.get_spell(spellId)
 		
 		# Retrieve the target and caster
-		caster_combatant = status.combatants[casterGuid]
-		target_combatant = status.combatants[targetGuid]
-		caster = CombatantHandler(caster_combatant)
-		target = CombatantHandler(target_combatant)
+		caster_unit = status.units[casterGuid]
+		target_unit = status.units[targetGuid]
+		caster = UnitHandler(caster_unit)
+		target = UnitHandler(target_unit)
 		spell.execute(caster, target)
 		
 		# Update the turn count and so on
