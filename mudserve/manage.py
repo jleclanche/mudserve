@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 Provides several utility methods:
 
@@ -32,7 +33,7 @@ def main():
 		elif arg == "dbshell":
 			cmd_dbshell()
 		else:
-			print "Argument '%s' not recognized." % arg
+			print "Argument %r not recognized." % (arg)
 			continue
 		print "Ok."
 
