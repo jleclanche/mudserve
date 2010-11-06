@@ -34,7 +34,7 @@ try:
 			print "It's your turn, casting spell!\n"
 			client.castSpell("auth1", "fight1", 1, "player2")
 		print "---------------------"
-		time.sleep(3)
+		time.sleep(1)
 	
 	# Close!
 	transport.close()
