@@ -1,0 +1,26 @@
+[
+	{
+		"id": 1,
+		"name": "Test Spell",
+		"effects": [
+			{
+				"effectCode": "DAMAGE",
+				"arg1": 10
+			}
+		]
+	},
+	{
+		"id": 2,
+		"name": "Test Spell 3",
+		"effects": [
+			{
+				"effectCode": "HEAL",
+				"arg1": 5
+			},
+			{
+				"effectCode": "DAMAGE",
+				"arg1": 8
+			}
+		]
+	}
+]
