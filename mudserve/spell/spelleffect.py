@@ -6,6 +6,7 @@ sub classes and their registered effect codes.
 """
 
 from mudserve.mudrpc.spell.effect.ttypes import SpellEffect, SpellEffectCode
+from mudserve.database.objects import DatabaseObjectHandler
 
 class _SpellEffectMeta(type):
 	def __init__(cls, *args):
@@ -19,7 +20,7 @@ class _SpellEffectMeta(type):
 		else:
 			cls._handlers[cls.EFFECT_CODE] = cls
 
-class SpellEffectHandler(object):
+class SpellEffectHandler(DatabaseObjectHandler):
 	__metaclass__ = _SpellEffectMeta
 	
 	def __new__(cls, effect):
@@ -50,6 +51,15 @@ class SpellEffectHandler(object):
 	
 	def execute(self, caster, target, *args):
 		raise NotImplementedError
+	
+	@classmethod
+	def from_python(cls, data):
+		effect = SpellEffect()
+		effect.effectCode = SpellEffectCode._NAMES_TO_VALUES[data['effectCode']]
+		effect.arg1 = data.get('arg1')
+		effect.arg2 = data.get('arg2')
+		effect.arg3 = data.get('arg3')
+		return effect
 
 
 class DamageEffectHandler(SpellEffectHandler):

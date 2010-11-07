@@ -1,8 +1,7 @@
 from os.path import join, dirname, abspath
 
-# The path to the mudserve root relative to the current working directory.
+# The absolute path to the mudserve root.
 MUDSERVE_ROOT = abspath(dirname(__file__))
-DATA_ROOT = join(MUDSERVE_ROOT, "data/")
 
 # The database configuration
 DATABASE = {
@@ -18,3 +17,5 @@ DATABASE = {
 INSTALLED_MODELS = (
 	"mudserve.models.user",
 )
+
+SECRET_KEY = "11f458a541f44dcf8752c84d16ac8858"

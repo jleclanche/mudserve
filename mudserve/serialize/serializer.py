@@ -62,6 +62,6 @@ class Serializer(object):
 		"""
 		
 		str = self.to_string(inst)
-		f = open(filepath, "wb")
+		f = open(filepath, "w+b")
 		f.write(str)
 		f.close()

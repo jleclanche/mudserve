@@ -20,7 +20,7 @@ struct AuthenticationResult {
 	4: optional auth_types.User user
 }
 
-service UserAuth {
+service AuthService {
 	/**
 	 * Makes sure the client is up to date.
 	 *
@@ -57,13 +57,13 @@ service UserAuth {
 	 *   AuthenticationResult object.
 	 *
 	 * @throws MUDAUserException
-	 *   - DATA_REQUIRED "username" - Username is empty
+	 *   - DATA_REQUIRED "email"    - Email is empty
 	 *   - DATA_REQUIRED "password" - Password is empty
-	 *   - INVALID_AUTH  "username" - Username not found
+	 *   - INVALID_AUTH  "email"    - UserEmailname not found
 	 *   - INVALID_AUTH  "password" - Password mismatch
 	 *   - PERMISSION_DENIED "User.active" - User account is closed
 	 */
-	AuthenticationResult authenticate(1: string username, 2: string password)
+	AuthenticationResult authenticate(1: string email, 2: string password)
 	  throws (1: auth_types.MUDAUserException userException,
 	          2: auth_types.MUDASystemException systemException),
 	
@@ -81,4 +81,23 @@ service UserAuth {
 	  throws (1: auth_types.MUDAUserException userException,
 	          2: auth_types.MUDASystemException systemException)
 	
+	/**
+	 * Creates a new user account on the server.
+	 * @param email
+	 *   The email to register.
+	 *
+	 * @param password
+	 *   The password to register.
+	 *
+	 * @throws MUDAUserException
+	 *   - DATA_REQUIRED   "email"    - Email is empty
+	 *   - DATA_REQUIRED   "password" - Password is empty
+	 *   - BAD_DATA_FORMAT "email"    - Email is of wrong format
+	 *   - BAD_DATA_FORMAT "password" - Password is of wrong format
+	 *   - USER_EXISTS                - A user with that email already exists
+	 */
+	 
+	AuthenticationResult registerAccount(1: string email, 2: string password)
+	throws (1: auth_types.MUDAUserException userException,
+	        2: auth_types.MUDASystemException systemException),
 }

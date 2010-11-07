@@ -3,4 +3,6 @@ include "character/character.thrift"
 include "combat/combat.thrift"
 include "map/map.thrift"
 include "spell/spell.thrift"
-include "spell/spelldatabase.thrift"
+
+// Database files
+include "database/databases.thrift"

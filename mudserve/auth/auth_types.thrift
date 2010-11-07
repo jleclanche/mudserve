@@ -24,7 +24,7 @@ typedef string AuthToken
  */
 struct User {
 	1: optional UserID id,
-	2: optional string username,
+	2: optional string email,
 	3: optional bool active,
 	4: optional Timestamp created,
 	5: optional Timestamp deleted,
@@ -55,7 +55,8 @@ enum MUDAErrorCode {
 	DATA_REQUIRED = 4,
 	PERMISSION_DENIED = 5,
 	INVALID_AUTH = 6,
-	AUTH_EXPIRED = 7
+	AUTH_EXPIRED = 7,
+	USER_EXISTS = 8
 }
 
 /**
